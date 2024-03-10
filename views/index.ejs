@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Video App</title>
+  <style media="screen">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #videoDiv {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-auto-rows: 300px;
+      padding: 20px;
+    }
+
+    #footer {
+      width: 100%;
+      height: 100px;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid #ced4da;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    button,
+    a {
+      height: 50px;
+      margin: 0 10px;
+      text-align: center;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      background-color: #dc3545;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      display: block;
+    }
+
+    button:hover,
+    a:hover {
+      background-color: #c82333;
+    }
+
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+  </style>
+  <script type="text/javascript">
+    var roomID = "<%= RoomId %>"
+  </script>
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <!-- <script src="/socket.io.js" defer></script> -->
+  <script src="index.js" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <div id="videoDiv">
+
+  </div>
+  <div id="footer">
+    <button id="joinBtn">Return Home</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const joinBtn = document.getElementById("joinBtn");
+      joinBtn.addEventListener("click", function () {
+        window.location.href = `/`;
+      });
+    });
+  </script>
+</body>
+
+</html>
